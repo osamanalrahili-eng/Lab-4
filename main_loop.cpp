@@ -4,6 +4,7 @@
 #include <string>
 #include <thread>
 
+#include <unistd.h>
 #include "capture_digit.h"
 #include "digit_cnn.h"
 #include "fpga_gemm_backend.h"
@@ -31,7 +32,7 @@ int main(int argc, char** argv) {
         std::cout << "FPGA ready = " << (fpga_ok ? "yes" : "no") << "\n";
 
         CaptureDevice cap;
-        if (!init_capture_device(cap, 160, 160, 6)) {
+        if (!init_capture_device(cap, 160, 70, 6)) {
             std::cerr << "Failed to initialize capture device.\n";
             return 1;
         }
@@ -59,6 +60,7 @@ int main(int argc, char** argv) {
 
             print_vector(result.log_probs, "LogSoftmax output");
             std::cout << "Predicted digit: " << result.pred << "\n";
+            display_digit_ledr(cap, result.pred);
 
             ++iter;
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
