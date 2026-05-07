@@ -1,0 +1,10 @@
+﻿Commit 2 (May 5,2026)
+
+
+The focus of this work was on the prediction aspect of Lab 4. While working on the camera input, we identified several problems with the way the handwritten numbers are processed by the model. The primary problem is that the ROI of the capture box includes a black area, which reduces visibility for the CNN.
+
+
+This problem was addressed by Osama and Faisal through the adjustment of the camera ROI. To ensure the proper positioning, we have modified the capture size and location, so that the image within the red box becomes clearer. Additionally, we used the debug image captures to see how the CNN actually receives data.
+
+
+Shahyan focused on the testing aspect of the prediction. He was experimenting with different handwritten digits, which allowed us to assess the accuracy of predictions. After repeating the tests several times, we have managed to significantly improve the camera capture and preprocessing, thus moving to the FPGA GEMM implementation stage.
